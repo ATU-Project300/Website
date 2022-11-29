@@ -1,0 +1,14 @@
+.nav-link {
+     color: white;
+     margin-left: 5px;
+}
+
+.navbar-brand {
+    color: white;
+    margin-right: 35px;
+}
+
+.carousel-item {
+    max-height: 400px;
+    height: 10%;
+}
