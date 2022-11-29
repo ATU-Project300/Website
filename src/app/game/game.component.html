@@ -1,7 +1,12 @@
-<ol>
-    <li *ngFor='let g of gamesList'>
-        Title: {{g.title}} -
-      Emulator: {{g.emulator}}
-    </li>
-  </ol>
+<div class="car-list-container">
+  <div class="card" style="width: 18rem; height: 25rem;" *ngFor="let g of gamesList">
+      <img class="card-img-top" src="{{g.image}}" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Title: {{g.title}}</h5>
+        <p class="card-text">Year: {{g.year}}</p>
+        <p class="card-text">Console: {{g.consoles}}</p>
+        <p class="card-text">Emulator: {{g.emulator}}</p>
+      </div>
+    </div>
+</div>
   
