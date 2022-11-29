@@ -1,4 +1,7 @@
-<p>game works!</p>
-<nav class="navbar navbar-dark bg-primary">
-    <!-- Navbar content -->
-</nav>
+<ol>
+    <li *ngFor='let g of gamesList'>
+        Title: {{g.title}} -
+      Emulator: {{g.emulator}}
+    </li>
+  </ol>
+  

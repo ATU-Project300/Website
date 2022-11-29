@@ -15,17 +15,20 @@ export class GameService {
   constructor(private http: HttpClient) { }
 
   getGames(): Observable<Game[]> {
+
+    console.log("get games called")
+    
     return this.http.get<Game[]>(`${this.dataUri}`)
       .pipe(
-        retry(2),
+        retry(3),
         catchError(this.errorHandler)
       )
   }
 
-  getGame(id: String): Observable<Game> {
+  getGame(_id: String): Observable<Game> {
     return this.http.get<Game>(`${this.dataUri}/$id`)
       .pipe(
-        retry(2),
+        retry(3),
         catchError(this.errorHandler)
       )
   }
