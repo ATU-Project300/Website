@@ -1,15 +1,15 @@
 .nav-link {
      color: white;
-     margin-left: 5px;
      font-family: monospace;
     font-size: 16px;
 }
 
 .navbar-brand {
     color: white;
-    margin-right: 35px;
+    margin-right: 15px;
     font-family: monospace;
     font-size: 26px;
+    padding-right: 30px;
     
 }
 
@@ -18,3 +18,7 @@
     height: 10%;
 }
 
+.navbar {
+    max-height: 75px;
+    height: 75px;
+}
