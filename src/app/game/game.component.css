@@ -1,0 +1,18 @@
+#gamesList {
+    background-image: linear-gradient(to right, #2A056B, #5D3482, #A005AA, #EC83C2);
+    margin-top: 90px;
+    margin-left: 44px;
+}
+
+.card-title {
+    color: white;
+}
+
+.appGameHeader {
+    color: white;
+    font-family: monospace;
+    text-align: center;
+    font-size: 36px;
+    padding-top: 20px;
+    font-style:italic
+}

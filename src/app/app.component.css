@@ -1,14 +1,20 @@
 .nav-link {
      color: white;
      margin-left: 5px;
+     font-family: monospace;
+    font-size: 16px;
 }
 
 .navbar-brand {
     color: white;
     margin-right: 35px;
+    font-family: monospace;
+    font-size: 26px;
+    
 }
 
 .carousel-item {
     max-height: 400px;
     height: 10%;
 }
+

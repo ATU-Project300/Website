@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit } from '@angular/core';
 import { Game } from '../game';
 import { GameService } from '../game.service';
 
@@ -7,11 +7,13 @@ import { GameService } from '../game.service';
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.css']
 })
-export class GameComponent implements OnInit {
+export class GameComponent implements OnInit{
   gamesList: Game[] = [];
   aError: String = '';
+  elementRef: any;
 
   constructor(private gameService: GameService) { }
+
 
   ngOnInit(): void {
     this.gameService.getGames().subscribe({
