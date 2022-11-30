@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+html, body {
+    background-image: linear-gradient(to right, #2A056B, #5D3482, #A005AA, #EC83C2);
+}
+
+.appGame {
+    background-color: aqua;
+}
