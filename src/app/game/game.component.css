@@ -8,6 +8,7 @@
     color: white;
     font-family: monospace;
     font-size: 18px;
+    text-align: center;
 }
 
 .appGameHeader {
@@ -21,4 +22,12 @@
 
 .card {
     background: none;
+    display: inline-block;
+    margin-left: 15px;
+    margin-bottom: 55px;
+    padding: auto;
+}
+
+.card-img-top {
+    max-height: 350px;
 }
