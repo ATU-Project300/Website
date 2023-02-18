@@ -2,7 +2,12 @@
 html, body {
     background-image: linear-gradient(to right, #2A056B, #5D3482, #A005AA, #EC83C2);
 }
+html, body.dark-theme {
+    background-image: linear-gradient(to right, #000000, #000000, #000000, #000000);
+}
 
 .appGame {
     background-color: aqua;
 }
+
+
