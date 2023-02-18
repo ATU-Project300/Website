@@ -46,6 +46,7 @@
     margin-right: 15px;
     background-color: transparent;
     border: none;
+    transition: all .2s ease-in-out;
   }
 
   .darkmodebtn:hover {
