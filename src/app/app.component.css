@@ -23,3 +23,21 @@
     max-height: 75px;
     height: 75px;
 }
+  .upbtn {
+    position: fixed;
+    font-size: 25px;
+    bottom: 15px;
+    border: none;
+    right: -1px;
+    opacity: 1;
+    background-color: transparent;
+    transition: all .2s ease-in-out;
+  }
+  .container-fluid.dark-theme {
+    background-color: black;
+  }
+  .darkmodebtn {
+    margin-right: 15px;
+    background-color: transparent;
+    border: none;
+  }
