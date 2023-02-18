@@ -24,9 +24,14 @@
 .card {
     background: none;
     display: inline-block;
-    margin-left: 15px;
+    margin-left: 20px;
     margin-bottom: 55px;
     padding: auto;
+}
+.card:hover {
+    -ms-transform: scale(1.5); /* IE 9 */
+  -webkit-transform: scale(1.5); /* Safari 3-8 */
+  transform: scale(1.1); 
 }
 
 .card-img-top {
