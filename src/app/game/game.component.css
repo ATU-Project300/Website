@@ -27,6 +27,7 @@
     margin-left: 20px;
     margin-bottom: 55px;
     padding: auto;
+    transition: all .2s ease-in-out;
 }
 .card:hover {
     -ms-transform: scale(1.5); /* IE 9 */
