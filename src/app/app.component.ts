@@ -1,6 +1,7 @@
 import { Component, HostListener, ElementRef } from '@angular/core';
 import { ViewEncapsulation } from '@angular/core';
-
+import { HttpClient } from '@angular/common/http';
+import { Game } from './game';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,20 @@ export class AppComponent {
   toggleDarkTheme(): void {
     document.body.classList.toggle('dark-theme');
   }
+  
+  games: Game[] = [];
+  filteredGames: Game[] = [];
+  searchTerm: string = '';
+
+  constructor(private http: HttpClient) {}
+
+  ngOnInit() {
+    this.http.get<Game[]>('/api/games').subscribe((data: Game[]) => {
+      this.games = data;
+      this.filteredGames = data;
+    });
+  }
+
   @HostListener('window:scroll')
   checkScroll() {
       
@@ -40,4 +55,6 @@ export class AppComponent {
       behavior: 'smooth' 
     });
   }
+
+
 }

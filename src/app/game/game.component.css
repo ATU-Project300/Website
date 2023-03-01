@@ -26,6 +26,7 @@
     display: inline-block;
     margin-left: 20px;
     margin-bottom: 55px;
+    margin-top: 55px;
     padding: auto;
     transition: all .2s ease-in-out;
 }
@@ -37,4 +38,10 @@
 
 .card-img-top {
     max-height: 350px;
+}
+
+#searchid{
+    margin-left: 10px;
+    margin-right: 10px;
+    max-height: 50px;
 }
