@@ -1,6 +1,11 @@
 <p class="appGameHeader">The Best Emulators for the Best Games</p>
 <div class="games-list-container" id="gamesList">
+  <form class="d-flex" role="search" (submit)="searchGames(searchInput.value)" id="searchid">
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" #searchInput>
+    <button class="btn btn-success" type="submit" id="searchid">search</button>
+    <button class="btn btn-success" type="submit" id="searchid" (click)="resetGames()">Reset</button>
+  </form>
   <div class="card" style="width: 18rem;" *ngFor="let g of gamesList">
       <img class="card-img-top" src="{{g.image}}" alt="Card image cap">
   </div>
-  
+</div>
