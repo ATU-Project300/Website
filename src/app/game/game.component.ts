@@ -11,6 +11,7 @@ export class GameComponent implements OnInit, AfterViewInit {
   gamesList: Game[] = [];
   filteredGamesList: Game[] = [];
   aError: String = '';
+  isDarkMode: boolean = false; // added boolean to track dark mode status
   @ViewChild('searchInput') searchInput!: ElementRef;
 
   constructor(private gameService: GameService) { }
@@ -44,6 +45,14 @@ export class GameComponent implements OnInit, AfterViewInit {
   resetGames(): void {
     // reset the games list to its original state
     this.filteredGamesList = this.gamesList;
+  }
+
+  toggleDarkMode(): void {
+    this.isDarkMode = !this.isDarkMode; // toggle the dark mode status
+    const gamesList = document.getElementById('gamesList');
+    if (gamesList) {
+      gamesList.classList.toggle('dark-theme'); // add or remove the 'dark-theme' class to the games list container
+    }
   }
 
 }

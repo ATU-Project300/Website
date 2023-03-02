@@ -1,9 +1,9 @@
-#gamesList.dark-theme {
-    background-image: linear-gradient(to right, #2A056B, #5D3482, #A005AA, #EC83C2);
-    margin-top: 90px;
-    margin-left: 44px;
-}
 
+
+#gamesList {
+  margin-top: 90px;
+  margin-right: 44px;
+}
 
 .card-title {
     color: white;
@@ -18,37 +18,50 @@
     text-align: center;
     font-size: 36px;
     padding-top: 20px;
+}
 
+.card.dark-theme {
+    background-color: #1a1a1a;
 }
 
 .card {
-    background: none;
+    background-color: non;
     display: inline-block;
-    margin-left: 20px;
+    margin-left: 10px;
     margin-bottom: 55px;
     margin-top: 55px;
     padding: auto;
     transition: all .2s ease-in-out;
 }
+
 .card:hover {
-    -ms-transform: scale(1.5); /* IE 9 */
-  -webkit-transform: scale(1.5); /* Safari 3-8 */
-  transform: scale(1.1); 
+    transform: scale(1.1);
 }
 
 .card-img-top {
     max-height: 350px;
 }
 
-#searchid{
-    margin-right:auto;
-    margin-left:auto;
+#searchid {
+    margin-right: auto;
+    margin-left: auto;
     width: 600px;
     height: 100%;
 }
-#btnsearchid{
-    margin-right:auto;
-    margin-left:10px;
+
+#btnsearchid {
+    margin-right: auto;
+    margin-left: 10px;
     width: 100px;
     height: 100%;
+}
+
+.no-games-found {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    color: white;
+    font-size: 20px;
+    font-family: monospace;
 }
