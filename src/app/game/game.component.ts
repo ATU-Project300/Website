@@ -10,8 +10,8 @@ import { GameService } from '../game.service';
 export class GameComponent implements OnInit, AfterViewInit {
   gamesList: Game[] = [];
   filteredGamesList: Game[] = [];
-  aError: String = '';
-  isDarkMode: boolean = false; // added boolean to track dark mode status
+  aError: string = '';
+  isDarkMode: boolean = false;
   @ViewChild('searchInput') searchInput!: ElementRef;
 
   constructor(private gameService: GameService) { }
@@ -28,12 +28,10 @@ export class GameComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    // focus on the search input element after the view has initialized
     this.searchInput.nativeElement.focus();
   }
 
   searchGames(searchTerm: string): void {
-    // filter the games list based on the search term, year, console, and emulator
     this.filteredGamesList = this.gamesList.filter(game =>
       game.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       game.year.toString().includes(searchTerm) ||
@@ -43,17 +41,25 @@ export class GameComponent implements OnInit, AfterViewInit {
   }
 
   resetGames(): void {
-    // reset the games list to its original state
     this.filteredGamesList = this.gamesList;
   }
 
   toggleDarkMode(): void {
-    this.isDarkMode = !this.isDarkMode; // toggle the dark mode status
+    this.isDarkMode = !this.isDarkMode;
     const gamesList = document.getElementById('gamesList');
     if (gamesList) {
-      gamesList.classList.toggle('dark-theme'); // add or remove the 'dark-theme' class to the games list container
+      gamesList.classList.toggle('dark-theme');
     }
   }
 
-}
+  rateGame(game: Game, rating: number): void {
+    this.gameService.rateGame(game._id, rating).subscribe({
+      next: () => {
+        game.rating = rating;
+        console.log(`Successfully rated game ${game.title} with ${rating} stars`);
+      },
+      error: (error) => console.error(error)
+    });
+  }
 
+}

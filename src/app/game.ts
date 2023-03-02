@@ -5,5 +5,6 @@ export interface Game {
     description: string,
     image: string,
     consoles: string,
-    emulator: string
+    emulator: string,
+    rating: number
 }
