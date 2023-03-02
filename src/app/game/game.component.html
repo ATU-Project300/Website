@@ -1,13 +1,20 @@
-<p class="appGameHeader">The Best Emulators for the Best Games</p>
+<p class="appGameHeader">THE BEST EMULATORS FOR THE BEST GAMES</p>
 <div class="games-list-container" id="gamesList" [ngClass]="{'dark-theme': isDarkMode}">
   <form class="d-flex" role="search" (submit)="searchGames(searchInput.value); $event.preventDefault()" id="searchid">
     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" #searchInput (input)="searchGames(searchInput.value)">
   </form>
   <div class="card" style="width: 18rem; margin-left: 20px;" *ngFor="let g of filteredGamesList">
     <img class="card-img-top" src="{{g.image}}" alt="Card image cap">
+    <div class="card-body">
+      <div class="rating">
+        <p class="card-text">Rating: {{ g.rating }}</p>
+        <button class="btn btn-secondary" (click)="rateGame(g, 5)">Rate</button>
+      </div>
+    </div>
   </div>
   <div *ngIf="filteredGamesList.length === 0" class="no-games-found" [ngClass]="{'dark-theme': isDarkMode}">
     <p>No games found</p>
   </div>
 </div>
+
 
