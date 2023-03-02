@@ -9,6 +9,7 @@ import { GameService } from '../game.service';
 })
 export class GameComponent implements OnInit, AfterViewInit {
   gamesList: Game[] = [];
+  filteredGamesList: Game[] = [];
   aError: String = '';
   @ViewChild('searchInput') searchInput!: ElementRef;
 
@@ -16,7 +17,10 @@ export class GameComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.gameService.getGames().subscribe({
-      next: (value: Game[]) => this.gamesList = value,
+      next: (value: Game[]) => {
+        this.gamesList = value;
+        this.filteredGamesList = value;
+      },
       complete: () => console.log("Games listed"),
       error: (aError) => this.aError = this.aError
     })
@@ -29,7 +33,7 @@ export class GameComponent implements OnInit, AfterViewInit {
 
   searchGames(searchTerm: string): void {
     // filter the games list based on the search term, year, console, and emulator
-    this.gamesList = this.gamesList.filter(game =>
+    this.filteredGamesList = this.gamesList.filter(game =>
       game.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       game.year.toString().includes(searchTerm) ||
       game.consoles.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -39,11 +43,7 @@ export class GameComponent implements OnInit, AfterViewInit {
 
   resetGames(): void {
     // reset the games list to its original state
-    this.gameService.getGames().subscribe({
-      next: (value: Game[]) => this.gamesList = value,
-      complete: () => console.log("Games listed"),
-      error: (aError) => this.aError = this.aError
-    });
+    this.filteredGamesList = this.gamesList;
   }
 
 }
