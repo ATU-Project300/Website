@@ -13,13 +13,7 @@ export class AppComponent {
   title = 'website';
   isShow!: boolean;
   topPosToStartShowing = 100;
-  toggleDarkTheme(): void {
-    document.body.classList.toggle('dark-theme');
-  }
-  
-  games: Game[] = [];
-  filteredGames: Game[] = [];
-  searchTerm: string = '';
+  isDarkModeOn = false; // added boolean to keep track of dark mode
 
   constructor(private http: HttpClient) {}
 
@@ -56,5 +50,35 @@ export class AppComponent {
     });
   }
 
+  toggleDarkTheme(): void {
+    const body = document.body;
+    body.classList.toggle('dark-theme');
+    const gamesListContainer = document.getElementById('gamesList');
+    if (gamesListContainer) {
+      gamesListContainer.classList.toggle('dark-theme');
+    }
+    this.isDarkModeOn = !this.isDarkModeOn; // toggle boolean value
+  }
+
+  games: Game[] = [];
+  filteredGames: Game[] = [];
+  searchTerm: string = '';
+
+  searchGames(): void {
+    // filter the games list based on the search term, year, console, and emulator
+    this.filteredGames = this.games.filter(game =>
+      game.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      game.year.toString().includes(this.searchTerm) ||
+      game.consoles.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      game.emulator.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
+  }
+
+  resetGames(): void {
+    // reset the games list to its original state
+    this.filteredGames = this.games;
+  }
 
 }
+
+

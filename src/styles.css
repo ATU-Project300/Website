@@ -1,13 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+
 html, body {
     background-image: linear-gradient(to right, #2A056B, #5D3482, #A005AA, #EC83C2);
 }
-html, body.dark-theme {
-    background-image: linear-gradient(to right, #000000, #000000, #000000, #000000);
+
+html.dark-theme, body.dark-theme {
+    background-image: linear-gradient(to right, #000000, #383838, #1a1a1a, #383838);
 }
 
-.appGame {
-    background-color: aqua;
-}
+
+
+
 
 
