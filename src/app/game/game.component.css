@@ -41,7 +41,14 @@
 }
 
 #searchid{
-    margin-left: 10px;
-    margin-right: 10px;
-    max-height: 50px;
+    margin-right:auto;
+    margin-left:auto;
+    width: 600px;
+    height: 100%;
+}
+#btnsearchid{
+    margin-right:auto;
+    margin-left:10px;
+    width: 100px;
+    height: 100%;
 }
