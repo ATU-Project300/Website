@@ -1,5 +1,3 @@
-
-
 #gamesList {
   margin-top: 90px;
   margin-right: 44px;
@@ -24,8 +22,12 @@
     background-color: #1a1a1a;
 }
 
+.container-fluid.dark-theme {
+    background-color: #1a1a1a;
+}
+
 .card {
-    background-color: non;
+    background-color: none;
     display: inline-block;
     margin-left: 10px;
     margin-bottom: 55px;
