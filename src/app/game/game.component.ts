@@ -23,7 +23,7 @@ export class GameComponent implements OnInit, AfterViewInit {
         this.filteredGamesList = value;
       },
       complete: () => console.log("Games listed"),
-      error: (aError) => this.aError = this.aError
+      error: (error) => this.aError = error
     })
   }
 
@@ -56,3 +56,4 @@ export class GameComponent implements OnInit, AfterViewInit {
   }
 
 }
+
