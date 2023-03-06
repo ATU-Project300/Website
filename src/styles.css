@@ -7,7 +7,9 @@ html.dark-theme, body.dark-theme {
     background-image: linear-gradient(to right, #000000, #383838, #1a1a1a, #383838);
 }
 
-
+.checked {
+    color: orange;
+  }
 
 
 

@@ -12,6 +12,7 @@ export class GameComponent implements OnInit, AfterViewInit {
   filteredGamesList: Game[] = [];
   aError: string = '';
   isDarkMode: boolean = false;
+  
   @ViewChild('searchInput') searchInput!: ElementRef;
 
   constructor(private gameService: GameService) { }
@@ -19,6 +20,28 @@ export class GameComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.gameService.getGames().subscribe({
       next: (value: Game[]) => {
+        value=value.map(x=>{
+          x.isChecked=[];
+          for (let index = 0; index < 5; index++) {
+            x.isChecked.push(false)
+            
+          }
+        
+          if(x.averageRating>0)
+          {
+            x.checkedIndex=x.averageRating-1;
+            if(x.rating.length>0){
+              x.totalUserRating=x.rating.length>1?x.rating.length-1:x.rating.length;
+            }
+          }
+          else{
+            x.checkedIndex=-1
+          }
+         
+
+          return x;
+        })
+       
         this.gamesList = value;
         this.filteredGamesList = value;
       },
@@ -53,9 +76,24 @@ export class GameComponent implements OnInit, AfterViewInit {
   }
 
   rateGame(game: Game, rating: number): void {
-    this.gameService.rateGame(game._id, rating).subscribe({
-      next: () => {
-        game.rating = rating;
+    //game.checkedIndex=rating;
+    this.gameService.rateGame(game._id, (rating+1)).subscribe({
+      next: (_game) => {
+      
+       // game.rating = rating;
+       
+       if(_game.averageRating>0)
+       {
+         game.checkedIndex=_game.averageRating-1;
+         if(_game.rating.length>0){
+          
+          game.totalUserRating=_game.rating.length>1?_game.rating.length-1:_game.rating.length;
+         }
+       }
+       else{
+         game.checkedIndex=-1
+       }
+      
         console.log(`Successfully rated game ${game.title} with ${rating} stars`);
       },
       error: (error) => console.error(error)

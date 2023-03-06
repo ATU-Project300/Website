@@ -6,5 +6,9 @@ export interface Game {
     image: string,
     consoles: string,
     emulator: string,
-    rating: number
+    rating: number[]
+    isChecked:boolean[]
+    checkedIndex:number,
+    averageRating:number,
+    totalUserRating:number
 }

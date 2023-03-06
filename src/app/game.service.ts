@@ -32,7 +32,7 @@ export class GameService {
 
   rateGame(_id: String, rating: number): Observable<Game> {
     const ratingData = { rating };
-    return this.http.post<Game>(`${this.dataUri}/${_id}/rate`, ratingData)
+    return this.http.put<Game>(`${this.dataUri}/${_id}/rate`, ratingData)
       .pipe(
         catchError(this.errorHandler)
       );
