@@ -1,0 +1,70 @@
+#gamesList {
+    margin-top: 90px;
+    margin-right: 40px;
+  }
+  
+  .card-title {
+      color: white;
+      font-family: monospace;
+      font-size: 18px;
+      text-align: center;
+  }
+  
+  .appGameHeader {
+      color: white;
+      font-family: monospace;
+      text-align: center;
+      font-size: 36px;
+      padding-top: 20px;
+  }
+  
+  .card.dark-theme {
+      background-color: #1a1a1a;
+  }
+  
+  .container-fluid.dark-theme {
+      background-color: #1a1a1a;
+  }
+  
+  .card {
+      background-color: none;
+      display: inline-block;
+      margin-left: 10px;
+      margin-bottom: 55px;
+      margin-top: 55px;
+      padding: auto;
+      transition: all .2s ease-in-out;
+  }
+  
+  .card:hover {
+      transform: scale(1.1);
+  }
+  
+  .card-img-top {
+      max-height: 350px;
+  }
+  
+  #searchid {
+      margin-right: auto;
+      margin-left: auto;
+      width: 600px;
+      height: 100%;
+  }
+  
+  #btnsearchid {
+      margin-right: auto;
+      margin-left: 10px;
+      width: 100px;
+      height: 100%;
+  }
+  
+  .no-games-found {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 200px;
+      color: white;
+      font-size: 20px;
+      font-family: monospace;
+  }
+  
