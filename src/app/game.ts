@@ -5,5 +5,10 @@ export interface Game {
     description: string,
     image: string,
     consoles: string,
-    emulator: string
+    emulator: string,
+    rating: number[]
+    isChecked:boolean[]
+    checkedIndex:number,
+    averageRating:number,
+    totalUserRating:number
 }
