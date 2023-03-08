@@ -47,7 +47,14 @@ export class GameComponent implements OnInit, AfterViewInit {
       },
       complete: () => console.log("Games listed"),
       error: (error) => this.aError = error
-    })
+    });
+
+    // get the dark mode preference from local storage
+    const storedMode = localStorage.getItem('isDarkMode');
+    if (storedMode !== null) {
+      this.isDarkMode = JSON.parse(storedMode);
+      this.toggleDarkMode();
+    }
   }
 
   ngAfterViewInit(): void {
@@ -73,6 +80,8 @@ export class GameComponent implements OnInit, AfterViewInit {
     if (gamesList) {
       gamesList.classList.toggle('dark-theme');
     }
+    // store the dark mode preference in local storage
+    localStorage.setItem('isDarkMode', JSON.stringify(this.isDarkMode));
   }
 
   rateGame(game: Game, rating: number): void {

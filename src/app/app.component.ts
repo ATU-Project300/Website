@@ -13,7 +13,7 @@ export class AppComponent {
   title = 'website';
   isShow!: boolean;
   topPosToStartShowing = 100;
-  isDarkModeOn = false; // added boolean to keep track of dark mode
+  isDarkModeOn = false;
 
   constructor(private http: HttpClient) {}
 
@@ -22,18 +22,19 @@ export class AppComponent {
       this.games = data;
       this.filteredGames = data;
     });
+
+    // check if dark mode is on in local storage and set the mode accordingly
+    const isDarkModeOn = localStorage.getItem('isDarkModeOn');
+    if (isDarkModeOn) {
+      this.isDarkModeOn = JSON.parse(isDarkModeOn);
+      this.setDarkMode();
+    }
   }
 
   @HostListener('window:scroll')
   checkScroll() {
-      
-    // window의 scroll top
-    // Both window.pageYOffset and document.documentElement.scrollTop returns the same result in all the cases. window.pageYOffset is not supported below IE 9.
-
     const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-
     console.log('[scroll]', scrollPosition);
-    
     if (scrollPosition >= this.topPosToStartShowing) {
       this.isShow = true;
     } else {
@@ -41,7 +42,6 @@ export class AppComponent {
     }
   }
 
-  // TODO: Cross browsing
   gotoTop() {
     window.scroll({ 
       top: 0, 
@@ -51,13 +51,19 @@ export class AppComponent {
   }
 
   toggleDarkTheme(): void {
+    this.isDarkModeOn = !this.isDarkModeOn;
+    this.setDarkMode();
+    // save dark mode state in local storage
+    localStorage.setItem('isDarkModeOn', JSON.stringify(this.isDarkModeOn));
+  }
+
+  setDarkMode(): void {
     const body = document.body;
-    body.classList.toggle('dark-theme');
+    body.classList.toggle('dark-theme', this.isDarkModeOn);
     const gamesListContainer = document.getElementById('gamesList');
     if (gamesListContainer) {
-      gamesListContainer.classList.toggle('dark-theme');
+      gamesListContainer.classList.toggle('dark-theme', this.isDarkModeOn);
     }
-    this.isDarkModeOn = !this.isDarkModeOn; // toggle boolean value
   }
 
   games: Game[] = [];
@@ -65,7 +71,6 @@ export class AppComponent {
   searchTerm: string = '';
 
   searchGames(): void {
-    // filter the games list based on the search term, year, console, and emulator
     this.filteredGames = this.games.filter(game =>
       game.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
       game.year.toString().includes(this.searchTerm) ||
@@ -75,10 +80,6 @@ export class AppComponent {
   }
 
   resetGames(): void {
-    // reset the games list to its original state
     this.filteredGames = this.games;
   }
-
 }
-
-
