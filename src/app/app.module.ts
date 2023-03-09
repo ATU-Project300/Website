@@ -6,6 +6,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GameComponent } from './game/game.component';
 
+import { AuthModule } from '@auth0/auth0-angular';
+import { environment } from 'src/environments/environment';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,7 +19,14 @@ import { GameComponent } from './game/game.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    AuthModule.forRoot({
+      domain: 'dev-eg03mr1pcwa4oe3l.us.auth0.com',
+      clientId: 'STywSI7MBeZUadSPqLUmCnT1VCig4yNz',
+      authorizationParams: {
+        redirect_uri: window.location.origin
+      }
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
