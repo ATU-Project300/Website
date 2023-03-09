@@ -20,6 +20,15 @@
  height: 10%;
 }
 
+.userinfo{
+  color: white;
+      font-family: monospace;
+      font-size: 22px;
+      padding-top: 20px;
+      margin-right: 750px;
+      
+}
+
 .navbar {
  max-height: 75px;
  height: 75px;
