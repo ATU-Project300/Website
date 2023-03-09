@@ -14,7 +14,18 @@
         </li>
       </ul>
       <button class="darkmodebtn" (click)="toggleDarkTheme()">🎨</button>
-      <button class="btn btn-success" type="submit">Login</button>
+      <div class="nav-bar__buttons">
+        <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+          <button class="btn btn-success" (click)="auth.logout({ logoutParams: { returnTo: document.location.origin } })">
+            Log out
+          </button>
+        </ng-container>
+    
+        <ng-template #loggedOut>
+          <button class="btn btn-success" (click)="auth.loginWithRedirect()">Log in</button>
+        </ng-template>
+    </div>
+    
       <button class="upbtn" *ngIf="isShow" (click)="gotoTop()">⬆</button>
     </div>
   </div>

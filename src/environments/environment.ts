@@ -4,8 +4,14 @@
 
 export const environment = {
   production: false,
-  //TODO: Host the API somewhere and point this to it
-  apiUri: 'http://localhost:3000'
+  apiUri: 'http://localhost:3000',
+  auth0: 
+  {
+    domain: 'dev-eg03mr1pcwa4oe3l.us.auth0.com',
+    clientId: 'STywSI7MBeZUadSPqLUmCnT1VCig4yNz',
+    callback_URL: 'http://localhost:4200',
+
+  }
 };
 
 /*
