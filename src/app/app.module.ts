@@ -1,3 +1,4 @@
+// app.module.ts
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -8,7 +9,7 @@ import { GameComponent } from './game/game.component';
 
 import { AuthModule } from '@auth0/auth0-angular';
 import { environment } from 'src/environments/environment';
-
+import { UserService } from 'src/user.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { environment } from 'src/environments/environment';
       }
     }),
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

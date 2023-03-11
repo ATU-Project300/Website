@@ -2,7 +2,7 @@ import { Component, HostListener, ElementRef, Inject } from '@angular/core';
 import { ViewEncapsulation } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Game } from './game';
-import { AuthModule, AuthService } from '@auth0/auth0-angular';
+import { AuthService } from '@auth0/auth0-angular';
 import { DOCUMENT } from '@angular/common';
 
 @Component({
@@ -19,6 +19,7 @@ export class AppComponent {
 
   constructor(private http: HttpClient, @Inject(DOCUMENT) public document: Document, public auth: AuthService) {}
   isAuthenticated$ = this.auth.isAuthenticated$
+
   ngOnInit() {
     this.http.get<Game[]>('/api/games').subscribe((data: Game[]) => {
       this.games = data;
