@@ -1,6 +1,8 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Game } from '../game';
 import { GameService } from '../game.service';
+import { UserService } from 'src/user.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-game',
@@ -12,12 +14,25 @@ export class GameComponent implements OnInit, AfterViewInit {
   filteredGamesList: Game[] = [];
   aError: string = '';
   isDarkMode: boolean = false;
+  isLoggedIn: boolean = false;
+  isLoggedIn$: Observable<boolean> = this.userService.isLoggedIn$;
   
   @ViewChild('searchInput') searchInput!: ElementRef;
 
-  constructor(private gameService: GameService) { }
+  constructor(
+    private gameService: GameService,
+    private userService: UserService,
+  ) { }
 
   ngOnInit(): void {
+    // check if user is logged in
+    this.userService.isLoggedIn$.subscribe({
+      next: (isLoggedIn) => {
+        this.isLoggedIn = isLoggedIn;
+      },
+      error: (error) => console.error(error)
+    });
+
     this.gameService.getGames().subscribe({
       next: (value: Game[]) => {
         value=value.map(x=>{
@@ -61,31 +76,13 @@ export class GameComponent implements OnInit, AfterViewInit {
     this.searchInput.nativeElement.focus();
   }
 
-  searchGames(searchTerm: string): void {
-    this.filteredGamesList = this.gamesList.filter(game =>
-      game.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      game.year.toString().includes(searchTerm) ||
-      game.consoles.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      game.emulator.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-  }
-
-  resetGames(): void {
-    this.filteredGamesList = this.gamesList;
-  }
-
-  toggleDarkMode(): void {
-    this.isDarkMode = !this.isDarkMode;
-    const gamesList = document.getElementById('gamesList');
-    if (gamesList) {
-      gamesList.classList.toggle('dark-theme');
-    }
-    // store the dark mode preference in local storage
-    localStorage.setItem('isDarkMode', JSON.stringify(this.isDarkMode));
-  }
-
   rateGame(game: Game, rating: number): void {
-    //game.checkedIndex=rating;
+    // check if user is logged in before allowing them to rate a game
+    if (!this.isLoggedIn) {
+      console.log('You must be logged in to rate games.');
+      return;
+    }
+
     this.gameService.rateGame(game._id, (rating+1)).subscribe({
       next: (_game) => {
       
@@ -109,4 +106,32 @@ export class GameComponent implements OnInit, AfterViewInit {
     });
   }
 
+  searchGames(searchTerm: string): void {
+    this.filteredGamesList = this.gamesList.filter(game =>
+      game.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      game.year.toString().includes(searchTerm) ||
+      game.consoles.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      game.emulator.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  }
+
+  resetGames(): void {
+    this.filteredGamesList = this.gamesList;
+  }
+
+  toggleDarkMode(): void {
+    this.isDarkMode = !this.isDarkMode;
+    const gamesList = document.getElementById('gamesList');
+    if (gamesList) {
+      gamesList.classList.toggle('dark-theme');
+    }
+    // store the dark mode preference in local storage
+    localStorage.setItem('isDarkMode', JSON.stringify(this.isDarkMode));
+  }
+
+  
+
 }
+
+
+
