@@ -16,7 +16,8 @@ export class GameComponent implements OnInit, AfterViewInit {
   isDarkMode: boolean = false;
   isLoggedIn: boolean = false;
   isLoggedIn$: Observable<boolean> = this.userService.isLoggedIn$;
-  
+  ratingError: string = '';
+
   @ViewChild('searchInput') searchInput!: ElementRef;
 
   constructor(
@@ -61,7 +62,7 @@ export class GameComponent implements OnInit, AfterViewInit {
         this.filteredGamesList = value;
       },
       complete: () => console.log("Games listed"),
-      error: (error) => this.aError = error
+      error: (error) => this.aError = error.message
     });
 
     // get the dark mode preference from local storage
@@ -79,7 +80,7 @@ export class GameComponent implements OnInit, AfterViewInit {
   rateGame(game: Game, rating: number): void {
     // check if user is logged in before allowing them to rate a game
     if (!this.isLoggedIn) {
-      console.log('You must be logged in to rate games.');
+      this.ratingError = 'You must be logged in to rate games.';
       return;
     }
 
@@ -102,7 +103,7 @@ export class GameComponent implements OnInit, AfterViewInit {
       
         console.log(`Successfully rated game ${game.title} with ${rating} stars`);
       },
-      error: (error) => console.error(error)
+      error: (error) => this.ratingError = error.message
     });
   }
 
