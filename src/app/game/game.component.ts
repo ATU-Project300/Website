@@ -46,6 +46,7 @@ export class GameComponent implements OnInit, AfterViewInit {
           if(x.averageRating>0)
           {
             x.checkedIndex=x.averageRating-1;
+
             if(x.rating.length>0){
               x.totalUserRating=x.rating.length>1?x.rating.length-1:x.rating.length;
             }

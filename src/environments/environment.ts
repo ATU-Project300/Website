@@ -4,12 +4,12 @@
 
 export const environment = {
   production: false,
-  apiUri: 'http://localhost:3000',
+  apiUri: 'https://api-production-4035.up.railway.app',
   auth0: 
   {
     domain: 'dev-eg03mr1pcwa4oe3l.us.auth0.com',
     clientId: 'STywSI7MBeZUadSPqLUmCnT1VCig4yNz',
-    callback_URL: 'http://localhost:4200',
+    callback_URL: 'https://website-production-ef30.up.railway.app',
 
   }
 };
