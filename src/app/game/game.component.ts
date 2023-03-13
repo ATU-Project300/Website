@@ -40,7 +40,6 @@ export class GameComponent implements OnInit, AfterViewInit {
           x.isChecked=[];
           for (let index = 0; index < 5; index++) {
             x.isChecked.push(false)
-            
           }
         
           // TODO: Breaks again on mouseover and mouseout

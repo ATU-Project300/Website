@@ -3,11 +3,14 @@
   <form class="d-flex" role="search" (submit)="searchGames(searchInput.value); $event.preventDefault()" id="searchid">
     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" #searchInput (input)="searchGames(searchInput.value)">
   </form>
+<!-- Another way to display an error:
+  <div *ngIf="ratingError" class="alert alert-danger m-4"> You must be logged in to rate games. </div>
+-->
   <div class="card" style="width: 18rem; margin-left: 20px;" *ngFor="let g of filteredGamesList">
     <img class="card-img-top" src="{{g.image}}" alt="Card image cap">
     <div class="card-body">
       <div class="rating">
-        <p class="card-text">{{ g.title }} - {{ g.year }}</p>
+        <p class="card-text" [ngStyle]="{'font-size': (g.title.length > 12 ? '16px' : '18px')}">{{ g.title }} - {{ g.year }}</p>
         <span (mouseover)="g.isChecked[0]=true" (click)="rateGame(g, 0)" (mouseout)="g.isChecked[0]=false" class="fa fa-star" [ngClass]="{'checked': g.checkedIndex==0?true:g.isChecked[0]}"></span>
         <span (mouseover)="g.isChecked[1]=true" (click)="rateGame(g, 1)" (mouseout)="g.isChecked[1]=false" class="fa fa-star" [ngClass]="{'checked': g.checkedIndex==1?true:g.isChecked[1]}"></span>
         <span (mouseover)="g.isChecked[2]=true" (click)="rateGame(g, 2)" (mouseout)="g.isChecked[2]=false" class="fa fa-star" [ngClass]="{'checked': g.checkedIndex==2?true:g.isChecked[2]}"></span>
