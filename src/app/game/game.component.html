@@ -8,22 +8,15 @@
     <div class="card-body">
       <div class="rating">
         <p class="card-text"></p>
-        
-      
-<span (mouseover)="g.isChecked[0]=true" (click)="rateGame(g, 0)" (mouseout)="g.isChecked[0]=false" class="fa fa-star" [ngClass]="{'checked': g.checkedIndex==0?true:g.isChecked[0]}"></span>
-<span (mouseover)="g.isChecked[1]=true" (click)="rateGame(g, 1)" (mouseout)="g.isChecked[1]=false" class="fa fa-star" [ngClass]="{'checked': g.checkedIndex==1?true:g.isChecked[1]}"></span>
-<span (mouseover)="g.isChecked[2]=true" (click)="rateGame(g, 2)" (mouseout)="g.isChecked[2]=false" class="fa fa-star" [ngClass]="{'checked':g.checkedIndex==2?true:g.isChecked[2]}"></span>
-<span (mouseover)="g.isChecked[3]=true" (click)="rateGame(g, 3)" (mouseout)="g.isChecked[3]=false" class="fa fa-star" [ngClass]="{'checked': g.checkedIndex==3?true:g.isChecked[3]}"></span>
-<span (mouseover)="g.isChecked[4]=true" (click)="rateGame(g, 4)" (mouseout)="g.isChecked[4]=false" class="fa fa-star" [ngClass]="{'checked': g.checkedIndex==4?true:g.isChecked[4]}"></span>
-
-  <span *ngIf="g.checkedIndex>-1"> ( {{g.totalUserRating}} )</span>
-        <!-- <button class="btn btn-secondary" (click)="rateGame(g, 5)">Rate</button> -->
+        <span (mouseover)="g.isChecked[0]=true" (click)="rateGame(g, 0)" (mouseout)="g.isChecked[0]=false" class="fa fa-star" [ngClass]="{'checked': g.checkedIndex==0?true:g.isChecked[0]}"></span>
+        <span (mouseover)="g.isChecked[1]=true" (click)="rateGame(g, 1)" (mouseout)="g.isChecked[1]=false" class="fa fa-star" [ngClass]="{'checked': g.checkedIndex==1?true:g.isChecked[1]}"></span>
+        <span (mouseover)="g.isChecked[2]=true" (click)="rateGame(g, 2)" (mouseout)="g.isChecked[2]=false" class="fa fa-star" [ngClass]="{'checked': g.checkedIndex==2?true:g.isChecked[2]}"></span>
+        <span (mouseover)="g.isChecked[3]=true" (click)="rateGame(g, 3)" (mouseout)="g.isChecked[3]=false" class="fa fa-star" [ngClass]="{'checked': g.checkedIndex==3?true:g.isChecked[3]}"></span>
+        <span (mouseover)="g.isChecked[4]=true" (click)="rateGame(g, 4)" (mouseout)="g.isChecked[4]=false" class="fa fa-star" [ngClass]="{'checked': g.checkedIndex==4?true:g.isChecked[4]}"></span>
+        <p class="rating-text">{{g.totalUserRating}} User ratings</p>
+        <p class="ratingtexterror" *ngIf="ratingError">{{ratingError}}</p>
       </div>
     </div>
   </div>
-  <div *ngIf="filteredGamesList.length === 0" class="no-games-found" [ngClass]="{'dark-theme': isDarkMode}">
-    <p>No games found</p>
-  </div>
+  <p class="error" *ngIf="aError">{{aError}}</p>
 </div>
-
-
