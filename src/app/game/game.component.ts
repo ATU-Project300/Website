@@ -43,9 +43,13 @@ export class GameComponent implements OnInit, AfterViewInit {
             
           }
         
+          // TODO: Breaks again on mouseover and mouseout
           if(x.averageRating>0)
           {
-            x.checkedIndex=x.averageRating-1;
+            //x.checkedIndex=x.averageRating-1;
+            for (let index = 0; index < x.averageRating-1; index++) {
+              x.isChecked[index] = true;
+            }
 
             if(x.rating.length>0){
               x.totalUserRating=x.rating.length>1?x.rating.length-1:x.rating.length;
