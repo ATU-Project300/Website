@@ -9,7 +9,7 @@ export const environment = {
   {
     domain: 'dev-eg03mr1pcwa4oe3l.us.auth0.com',
     clientId: 'STywSI7MBeZUadSPqLUmCnT1VCig4yNz',
-    callback_URL: 'https://stellar-duckanoo-953d05.netlify.app/',
+    callback_URL: 'https://website-production-ef30.up.railway.app',
 
   }
 };
