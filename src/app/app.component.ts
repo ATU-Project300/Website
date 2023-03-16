@@ -1,7 +1,6 @@
 import { Component, HostListener, ElementRef, Inject } from '@angular/core';
 import { ViewEncapsulation } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Game } from './game';
 import { AuthService } from '@auth0/auth0-angular';
 import { DOCUMENT } from '@angular/common';
 
@@ -21,10 +20,6 @@ export class AppComponent {
   isAuthenticated$ = this.auth.isAuthenticated$
 
   ngOnInit() {
-    this.http.get<Game[]>('/api/games').subscribe((data: Game[]) => {
-      this.games = data;
-      this.filteredGames = data;
-    });
 
     // check if dark mode is on in local storage and set the mode accordingly
     const isDarkModeOn = localStorage.getItem('isDarkModeOn');
@@ -69,20 +64,4 @@ export class AppComponent {
     }
   }
 
-  games: Game[] = [];
-  filteredGames: Game[] = [];
-  searchTerm: string = '';
-
-  searchGames(): void {
-    this.filteredGames = this.games.filter(game =>
-      game.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-      game.year.toString().includes(this.searchTerm) ||
-      game.consoles.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-      game.emulator.toLowerCase().includes(this.searchTerm.toLowerCase())
-    );
-  }
-
-  resetGames(): void {
-    this.filteredGames = this.games;
-  }
 }
