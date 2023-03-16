@@ -1,12 +1,8 @@
 <p class="appGameHeader">THE BEST EMULATORS FOR THE BEST GAMES</p>
-
-<!-- Another way to display an error:
-  <div *ngIf="ratingError" class="alert alert-danger m-4"> You must be logged in to rate games. </div>
--->
-  <div class="card" style="width: 18rem; margin-left: 20px;" *ngFor="let g of emulatorList">
-    <img class="card-img-top" src="{{g.image}}" alt="Card image cap">
+  <div class="card" style="width: 18rem; margin-left: 20px;" *ngFor="let e of emulatorList">
+    <img class="card-img-top" src="{{e.image}}" alt="{{e.name}} logo">
     <div class="card-body">
-      <p class="card-text" [ngStyle]="{'font-size': (g.name.length > 12 ? '16px' : '18px')}"> <a href="{{ g.website }}" target="_blank" >{{ g.name }} </a></p>
+      <p class="card-text" [ngStyle]="{'font-size': (e.name.length > 12 ? '16px' : '18px')}"> <a href="{{ e.website }}" target="_blank" style="color: inherit;text-decoration: none" >{{ e.name }} </a></p>
     </div>
     
   </div>
