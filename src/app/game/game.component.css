@@ -1,8 +1,3 @@
-#gamesList {
-    margin-top: 90px;
-    margin-right: 40px;
-  }
-  
   .card-title {
       color: white;
       font-family: monospace;
@@ -47,7 +42,7 @@
   #searchid {
       margin-right: auto;
       margin-left: auto;
-      width: 600px;
+      width: 38rem;
       height: 100%;
   }
   
@@ -70,4 +65,3 @@
   .ratingtexterror {
     color: red;
   }
-  
