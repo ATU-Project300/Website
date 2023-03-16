@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Emulator } from './emulator';
-import { catchError, Observable, throwError, retry } from 'rxjs';
+import { Observable, catchError, throwError, retry } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmulatorService {
+
   private dataUri = `${environment.apiUri}/emulators`;
   
   constructor(private http: HttpClient) { }
@@ -21,7 +22,7 @@ export class EmulatorService {
       )
   }
 
-  getGame(_id: String): Observable<Emulator> {
+  getEmulator(_id: String): Observable<Emulator> {
     return this.http.get<Emulator>(`${this.dataUri}/${_id}`)
       .pipe(
         retry(3),

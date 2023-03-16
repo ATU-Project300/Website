@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Emulator } from '../emulator';
 import { EmulatorService } from '../emulator.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-emulators',
@@ -16,6 +17,7 @@ export class EmulatorsComponent implements OnInit {
 
   ngOnInit(): void {
     this.EmulatorService.getEmulators().subscribe({
+      next: emulators => { this.emulatorList = emulators; }
       
           })
   }
