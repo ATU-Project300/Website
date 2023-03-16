@@ -22,3 +22,11 @@
 .card-img-top {
     max-height: 350px;
 }
+
+.appGameHeader {
+      color: white;
+      font-family: monospace;
+      text-align: center;
+      font-size: 36px;
+      padding-top: 20px;
+}
