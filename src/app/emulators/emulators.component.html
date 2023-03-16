@@ -6,7 +6,7 @@
   <div class="card" style="width: 18rem; margin-left: 20px;" *ngFor="let g of emulatorList">
     <img class="card-img-top" src="{{g.image}}" alt="Card image cap">
     <div class="card-body">
-      <p class="card-text" [ngStyle]="{'font-size': (g.name.length > 12 ? '16px' : '18px')}">{{ g.name }}</p>
+      <p class="card-text" [ngStyle]="{'font-size': (g.name.length > 12 ? '16px' : '18px')}"> <a href="{{ g.website }}" target="_blank" >{{ g.name }} </a></p>
     </div>
     
   </div>

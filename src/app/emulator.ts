@@ -4,5 +4,6 @@ export interface Emulator {
     description: string,
     uri: string,
     image: string,
+    website: string,
     executable: string
 }
