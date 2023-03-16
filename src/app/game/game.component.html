@@ -1,5 +1,5 @@
 <p class="appGameHeader">THE BEST EMULATORS FOR THE BEST GAMES</p>
-<div class="games-list-container" id="gamesList" [ngClass]="{'dark-theme': isDarkMode}">
+<div class="games-list-container ms-3" [ngClass]="{'dark-theme': isDarkMode}">
   <form class="d-flex" role="search" (submit)="searchGames(searchInput.value); $event.preventDefault()" id="searchid">
     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" #searchInput (input)="searchGames(searchInput.value)">
   </form>
