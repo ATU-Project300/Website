@@ -11,12 +11,14 @@ import { AuthModule } from '@auth0/auth0-angular';
 import { environment } from 'src/environments/environment';
 import { UserService } from 'src/user.service';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { EmulatorsComponent } from './emulators/emulators.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GameComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    EmulatorsComponent
   ],
   imports: [
     BrowserModule,
