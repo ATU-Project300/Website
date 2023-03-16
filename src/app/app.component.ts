@@ -22,17 +22,14 @@ export class AppComponent {
   ngOnInit() {
 
     // check if dark mode is on in local storage and set the mode accordingly
-    const isDarkModeOn = localStorage.getItem('isDarkModeOn');
-    if (isDarkModeOn) {
-      this.isDarkModeOn = JSON.parse(isDarkModeOn);
-      this.setDarkMode();
-    }
+    this.checkDarkMode();
   }
 
   @HostListener('window:scroll')
   checkScroll() {
     const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-    console.log('[scroll]', scrollPosition);
+    // Commented out console.log to prevent spamming the console
+    //console.log('[scroll]', scrollPosition);
     if (scrollPosition >= this.topPosToStartShowing) {
       this.isShow = true;
     } else {
@@ -53,6 +50,17 @@ export class AppComponent {
     this.setDarkMode();
     // save dark mode state in local storage
     localStorage.setItem('isDarkModeOn', JSON.stringify(this.isDarkModeOn));
+  }
+
+  // check if dark mode is on in local storage and set the mode accordingly
+  checkDarkMode(): void {
+    // check if dark mode is on in local storage and set the mode accordingly
+    const isDarkModeOn = localStorage.getItem('isDarkModeOn');
+    if (isDarkModeOn) {
+      this.isDarkModeOn = JSON.parse(isDarkModeOn);
+      this.setDarkMode();
+    }
+
   }
 
   setDarkMode(): void {
