@@ -16,7 +16,7 @@
 }
 
 .carousel-item {
- max-height: 400px;
+ max-height: 330px;
  height: 10%;
 }
 
@@ -76,4 +76,9 @@ transform: scale(1.5);
 
 .navbar-brand {
   margin-right: 1rem;
+}
+
+#logo{
+    width: 225px;
+    height: 160px;
 }
