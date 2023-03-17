@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Game } from '../game';
-import { GameService } from '../game.service';
+import { Game } from '../../models/game';
+import { GameService } from '../../services/game.service';
 import { UserService } from 'src/user.service';
 import { Observable } from 'rxjs';
 

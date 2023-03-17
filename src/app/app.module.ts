@@ -5,13 +5,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { GameComponent } from './game/game.component';
+import { GameComponent } from './components/game/game.component';
 
 import { AuthModule } from '@auth0/auth0-angular';
 import { environment } from 'src/environments/environment';
 import { UserService } from 'src/user.service';
-import { AboutUsComponent } from './about-us/about-us.component';
-import { EmulatorsComponent } from './emulators/emulators.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
+import { EmulatorsComponent } from './components/emulators/emulators.component';
 
 @NgModule({
   declarations: [

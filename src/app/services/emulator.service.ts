@@ -1,41 +1,33 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Game } from './game';
+import { Emulator } from '../models/emulator';
 import { Observable, catchError, throwError, retry } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class GameService {
+export class EmulatorService {
 
-  private dataUri = `${environment.apiUri}/games`;
-
+  private dataUri = `${environment.apiUri}/emulators`;
+  
   constructor(private http: HttpClient) { }
 
-  getGames(): Observable<Game[]> {
-    console.log("get games called");
-    return this.http.get<Game[]>(`${this.dataUri}`)
+  getEmulators(): Observable<Emulator[]> {
+    console.log("get Emulators called");
+    return this.http.get<Emulator[]>(`${this.dataUri}`)
       .pipe(
         retry(3),
         catchError(this.errorHandler)
       )
   }
 
-  getGame(_id: String): Observable<Game> {
-    return this.http.get<Game>(`${this.dataUri}/${_id}`)
+  getEmulator(_id: String): Observable<Emulator> {
+    return this.http.get<Emulator>(`${this.dataUri}/${_id}`)
       .pipe(
         retry(3),
         catchError(this.errorHandler)
       )
-  }
-
-  rateGame(_id: String, rating: number): Observable<Game> {
-    const ratingData = { rating };
-    return this.http.put<Game>(`${this.dataUri}/${_id}/rate`, ratingData)
-      .pipe(
-        catchError(this.errorHandler)
-      );
   }
 
   private errorHandler(error: HttpErrorResponse) {
@@ -49,4 +41,3 @@ export class GameService {
     return throwError(() => new Error('Issue somewhere down the pipe'));
   }
 }
-
