@@ -3,9 +3,9 @@
   <form class="d-flex" role="search" (submit)="searchGames(searchInput.value); $event.preventDefault()" id="searchid">
     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" #searchInput (input)="searchGames(searchInput.value)">
   </form>
-<!-- Another way to display an error:
+  <!-- TODO: Replace this with a toast message appearing at top right -->
   <div *ngIf="ratingError" class="alert alert-danger m-4"> You must be logged in to rate games. </div>
--->
+  <div *ngIf="successMessage" class="alert alert-success m-4">{{successMessage}}</div>
   <div class="card" style="width: 18rem; margin-left: 20px;" *ngFor="let g of filteredGamesList">
     <img class="card-img-top" src="{{g.image}}" alt="Card image cap">
     <div class="card-body">
@@ -19,8 +19,6 @@
 <span (mouseover)="g.isChecked[4]=true" (click)="rateGame(g, 4)" (mouseout)="g.isChecked[4]=false" class="fa fa-star" [ngClass]="{'checked': g.checkedIndex==4?true:g.isChecked[4]}" [title]="(g.totalUserRating > 0 ? g.totalUserRating + ' User ratings - ' + g.averageRating + ' average' : 'No ratings yet')"></span>
 
         <p class="rating-text">{{g.totalUserRating}} User ratings</p>
-        <p class="ratingtexterror" *ngIf="ratingError">{{ratingError}}</p>
-        <p class="ratingtextsuccess" *ngIf="successMessage">{{successMessage}}</p>
       </div>
     </div>
   </div>

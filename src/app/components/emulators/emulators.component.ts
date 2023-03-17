@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Emulator } from '../emulator';
-import { EmulatorService } from '../emulator.service';
+import { Emulator } from '../../models/emulator';
+import { EmulatorService } from '../../services/emulator.service';
 import { Observable } from 'rxjs';
 
 @Component({
