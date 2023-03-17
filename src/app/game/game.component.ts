@@ -17,6 +17,7 @@ export class GameComponent implements OnInit, AfterViewInit {
   isLoggedIn: boolean = false;
   isLoggedIn$: Observable<boolean> = this.userService.isLoggedIn$;
   ratingError: string = '';
+  successMessage: string = '';
 
   @ViewChild('searchInput') searchInput!: ElementRef;
 
@@ -106,6 +107,7 @@ export class GameComponent implements OnInit, AfterViewInit {
        }
       
         console.log(`Successfully rated game ${game.title} with ${rating} stars`);
+        this.successMessage = `You have successfully rated ${game.title} with ${rating} stars!`;
       },
       error: (error) => this.ratingError = error.message
     });

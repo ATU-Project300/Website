@@ -12,13 +12,15 @@
       <p class="card-text" [ngStyle]="{'font-size': (g.title.length > 12 ? '16px' : '18px')}">{{ g.title }} - {{ g.year }}</p>
       <div class="rating">
         <a>Emulation rating: </a>
-        <span (mouseover)="g.isChecked[0]=true" (click)="rateGame(g, 0)" (mouseout)="g.isChecked[0]=false" class="fa fa-star" [ngClass]="{'checked': g.checkedIndex==0?true:g.isChecked[0]}"></span>
-        <span (mouseover)="g.isChecked[1]=true" (click)="rateGame(g, 1)" (mouseout)="g.isChecked[1]=false" class="fa fa-star" [ngClass]="{'checked': g.checkedIndex==1?true:g.isChecked[1]}"></span>
-        <span (mouseover)="g.isChecked[2]=true" (click)="rateGame(g, 2)" (mouseout)="g.isChecked[2]=false" class="fa fa-star" [ngClass]="{'checked': g.checkedIndex==2?true:g.isChecked[2]}"></span>
-        <span (mouseover)="g.isChecked[3]=true" (click)="rateGame(g, 3)" (mouseout)="g.isChecked[3]=false" class="fa fa-star" [ngClass]="{'checked': g.checkedIndex==3?true:g.isChecked[3]}"></span>
-        <span (mouseover)="g.isChecked[4]=true" (click)="rateGame(g, 4)" (mouseout)="g.isChecked[4]=false" class="fa fa-star" [ngClass]="{'checked': g.checkedIndex==4?true:g.isChecked[4]}"></span>
+        <span (mouseover)="g.isChecked[0]=true" (click)="rateGame(g, 0)" (mouseout)="g.isChecked[0]=false" class="fa fa-star" [ngClass]="{'checked': g.checkedIndex==0?true:g.isChecked[0]}" [title]="(g.totalUserRating > 0 ? g.totalUserRating + ' User ratings - ' + g.averageRating + ' average' : 'No ratings yet')"></span>
+<span (mouseover)="g.isChecked[1]=true" (click)="rateGame(g, 1)" (mouseout)="g.isChecked[1]=false" class="fa fa-star" [ngClass]="{'checked': g.checkedIndex==1?true:g.isChecked[1]}" [title]="(g.totalUserRating > 0 ? g.totalUserRating + ' User ratings - ' + g.averageRating + ' average' : 'No ratings yet')"></span>
+<span (mouseover)="g.isChecked[2]=true" (click)="rateGame(g, 2)" (mouseout)="g.isChecked[2]=false" class="fa fa-star" [ngClass]="{'checked': g.checkedIndex==2?true:g.isChecked[2]}" [title]="(g.totalUserRating > 0 ? g.totalUserRating + ' User ratings - ' + g.averageRating + ' average' : 'No ratings yet')"></span>
+<span (mouseover)="g.isChecked[3]=true" (click)="rateGame(g, 3)" (mouseout)="g.isChecked[3]=false" class="fa fa-star" [ngClass]="{'checked': g.checkedIndex==3?true:g.isChecked[3]}" [title]="(g.totalUserRating > 0 ? g.totalUserRating + ' User ratings - ' + g.averageRating + ' average' : 'No ratings yet')"></span>
+<span (mouseover)="g.isChecked[4]=true" (click)="rateGame(g, 4)" (mouseout)="g.isChecked[4]=false" class="fa fa-star" [ngClass]="{'checked': g.checkedIndex==4?true:g.isChecked[4]}" [title]="(g.totalUserRating > 0 ? g.totalUserRating + ' User ratings - ' + g.averageRating + ' average' : 'No ratings yet')"></span>
+
         <p class="rating-text">{{g.totalUserRating}} User ratings</p>
         <p class="ratingtexterror" *ngIf="ratingError">{{ratingError}}</p>
+        <p class="ratingtextsuccess" *ngIf="successMessage">{{successMessage}}</p>
       </div>
     </div>
   </div>
