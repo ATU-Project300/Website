@@ -1,9 +1,9 @@
-<h2>Please Enter Data about a game</h2>
+<h2 class="addgametxt">Please Enter Data about a game</h2>
 
 <button type="button" class="btn-close" aria-label="Close" (click)="closeForm()"></button>
 
  <form [formGroup]="gameForm" (ngSubmit) = "onSubmit()" class="form-group" class="container-md">
-
+    <div class="textform">
     <div class="mb-3">
         <label for="title"> Title</label>
         <input id="title" type="text" formControlName="title" class="form-control">
@@ -29,9 +29,9 @@
         <label for="emulator"> Emulator</label>
         <input id="emulator" type="text" formControlName="emulator" class="form-control">
     </div>
+    </div>
 
-    <button type="submit" [disabled] = "!gameForm.valid" >Submit</button>
-
+    <button class="btn btn-success" type="submit" [disabled] = "!gameForm.valid" >Submit</button>
     <div *ngIf="gameForm.get('title')?.invalid && gameForm.get('title')?.touched" class="alert alert-danger" >
         Title is required and must be at least 4 letters
     </div>

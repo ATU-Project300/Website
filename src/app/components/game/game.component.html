@@ -1,13 +1,13 @@
 <p class="appGameHeader">THE BEST EMULATORS FOR THE BEST GAMES</p>
 
 <app-add-game *ngIf="showGameForm" (gameFormClose)="gameFormClose($event)" [game]="currentGame"></app-add-game>
-<button (click)="openAddGame()" *ngIf="!showGameForm" class="btn btn-lg btn-success">Add Game</button>
+<button (click)="openAddGame()" *ngIf="!showGameForm" class="btn btn-lg btn-success add-game-btn">Add Game</button>
+
 
 <div class="games-list-container ms-3" [ngClass]="{'dark-theme': isDarkMode}">
   <form class="d-flex" role="search" (submit)="searchGames(searchInput.value); $event.preventDefault()" id="searchid">
     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" #searchInput (input)="searchGames(searchInput.value)">
   </form>
-
 
   <!-- TODO: Replace this with a toast message appearing at top right -->
   <div *ngIf="ratingError" class="alert alert-danger m-4"> You must be logged in to rate games. </div>
@@ -15,7 +15,7 @@
   <div class="card" style="width: 18rem; margin-left: 20px;" *ngFor="let g of filteredGamesList">
     <img class="card-img-top" src="{{g.image}}" alt="Card image cap">
     <div class="card-body">
-      <p class="card-text" [ngStyle]="{'font-size': (g.title.length > 12 ? '16px' : '18px')}">{{ g.title }} - {{ g.year }}</p>
+      <p class="card-text" [ngStyle]="{'font-size': (g.title.length > 12 ? '12px' : '14px')}">{{ g.title }} - {{ g.year }}</p>
       <div class="rating">
         <a>Emulation rating: </a>
         <span (mouseover)="g.isChecked[0]=true" (click)="rateGame(g, 0)" (mouseout)="g.isChecked[0]=false" class="fa fa-star" [ngClass]="{'checked': g.checkedIndex==0?true:g.isChecked[0]}" [title]="(g.totalUserRating > 0 ? g.totalUserRating + ' User ratings - ' + g.averageRating + ' average' : 'No ratings yet')"></span>
