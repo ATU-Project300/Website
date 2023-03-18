@@ -65,3 +65,6 @@
   .ratingtexterror {
     color: red;
   }
+  .add-game-btn {
+    margin-left: 40px;
+  }
