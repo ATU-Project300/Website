@@ -30,6 +30,22 @@ export class GameService {
       )
   }
 
+  addGame(game: Game): Observable<Game> {
+    return this.http.post<Game>(this.dataUri, game)
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
+
+  updateGame(id: string, game: Game): Observable<Game> {
+    console.log('subscribing to update/' + id);
+    let gameURI: string = this.dataUri + '/' + id;
+    return this.http.put<Game>(gameURI, game)
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
+
   rateGame(_id: String, rating: number): Observable<Game> {
     const ratingData = { rating };
     return this.http.put<Game>(`${this.dataUri}/${_id}/rate`, ratingData)

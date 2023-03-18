@@ -1,8 +1,14 @@
 <p class="appGameHeader">THE BEST EMULATORS FOR THE BEST GAMES</p>
+
+<app-add-game *ngIf="showGameForm" (gameFormClose)="gameFormClose($event)" [game]="currentGame"></app-add-game>
+<button (click)="openAddGame()" *ngIf="!showGameForm" class="btn btn-lg btn-success">Add Game</button>
+
 <div class="games-list-container ms-3" [ngClass]="{'dark-theme': isDarkMode}">
   <form class="d-flex" role="search" (submit)="searchGames(searchInput.value); $event.preventDefault()" id="searchid">
     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" #searchInput (input)="searchGames(searchInput.value)">
   </form>
+
+
   <!-- TODO: Replace this with a toast message appearing at top right -->
   <div *ngIf="ratingError" class="alert alert-danger m-4"> You must be logged in to rate games. </div>
   <div *ngIf="successMessage" class="alert alert-success m-4">{{successMessage}}</div>

@@ -12,12 +12,15 @@ import { Observable } from 'rxjs';
 export class GameComponent implements OnInit, AfterViewInit {
   gamesList: Game[] = [];
   filteredGamesList: Game[] = [];
+  currentGame: Game | undefined;
   aError: string = '';
   isDarkMode: boolean = false;
   isLoggedIn: boolean = false;
   isLoggedIn$: Observable<boolean> = this.userService.isLoggedIn$;
   ratingError: string = '';
   successMessage: string = '';
+  showGameForm: Boolean = false;
+  message: string = '';
 
   @ViewChild('searchInput') searchInput!: ElementRef;
 
@@ -136,7 +139,55 @@ export class GameComponent implements OnInit, AfterViewInit {
     localStorage.setItem('isDarkMode', JSON.stringify(this.isDarkMode));
   }
 
-  
+  openAddGame(): void {
+    this.currentGame = undefined;
+    this.showGameForm = true;
+  }
+
+  gameFormClose(game?: any): void {
+    this.showGameForm = false;
+    console.table(game);
+    if (game == null) {
+      this.message = "Editing cancelled";
+      this.currentGame = undefined
+    }
+    else if (this.currentGame == null) {
+     this.addNewGame(game);
+    }
+    else {
+     this.updateGame(this.currentGame._id, game)
+    }
+  }
+
+  addNewGame(newGame: Game): void {
+    console.log('adding new game ' + JSON.stringify(newGame));
+    this.gameService.addGame({ ...newGame })
+      .subscribe({
+        next: game => {
+          console.log(JSON.stringify(game) + ' has been added');
+          this.message = "new game has been added";
+        },
+        error: (err) => this.message = err
+      });
+
+    // so the updated list appears
+    this.ngOnInit();
+    this.currentGame=undefined;
+  }
+
+  updateGame(id: string, game: Game): void {
+    console.log('updating ');
+    console.table (game);
+    this.gameService.updateGame(id, game)
+      .subscribe({
+        next: game => {
+          console.log(JSON.stringify(game) + ' has been updated');
+          this.message = " game has been updated";
+        },
+        error: (err) => this.message = err
+      });
+    this.ngOnInit();
+  }
 
 }
 
