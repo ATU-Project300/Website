@@ -1,7 +1,7 @@
 <p class="appGameHeader">THE BEST EMULATORS FOR THE BEST GAMES</p>
 
 <app-add-game *ngIf="showGameForm" (gameFormClose)="gameFormClose($event)" [game]="currentGame"></app-add-game>
-<button (click)="openAddGame()" *ngIf="!showGameForm" class="btn btn-lg btn-success add-game-btn">Add Game</button>
+<button *ngIf="isLoggedIn && !showGameForm" class="btn btn-lg btn-success add-game-btn" (click)="openAddGame()">Add Game</button>
 
 
 <div class="games-list-container ms-3" [ngClass]="{'dark-theme': isDarkMode}">
