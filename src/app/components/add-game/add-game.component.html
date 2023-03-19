@@ -2,52 +2,62 @@
 
 <button type="button" class="btn-close" aria-label="Close" (click)="closeForm()"></button>
 
- <form [formGroup]="gameForm" (ngSubmit) = "onSubmit()" class="form-group" class="container-md">
-    <div class="textform">
+<form [formGroup]="gameForm" (ngSubmit)="onSubmit()" class="form-group container-md">
+  <div class="textform">
     <div class="mb-3">
-        <label for="title"> Title</label>
-        <input id="title" type="text" formControlName="title" class="form-control">
+      <label for="title"> Title</label>
+      <input id="title" type="text" formControlName="title" class="form-control">
     </div>
     <div class="mb-3">
-        <label for="year"> Year</label>
-        <input id="year" type="number" formControlName="year" class="form-control">
+      <label for="year"> Year</label>
+      <input id="year" type="number" formControlName="year" class="form-control">
     </div>
     <div class="mb-3">
-        <label for="description"> Description</label>
-        <input id="description" type="text" formControlName="description" class="form-control">
+      <label for="description"> Description</label>
+      <input id="description" type="text" formControlName="description" class="form-control">
     </div>
     <div class="mb-3">
-        <label for="image"> Image</label>
-        <input id="image" type="text" formControlName="image" class="form-control">
+      <label for="image"> Image</label>
+      <div class="d-flex">
+        <input id="image" type="file" formControlName="image" (change)="previewImage($event)" accept="image/*" class="form-control">
+        <input id="imageUrl" type="url" formControlName="imageUrl" class="form-control" placeholder="Or enter image URL">
+      </div>
+      <img *ngIf="previewImageUrl" [src]="previewImageUrl" alt="Image Preview" class="img-preview">
     </div>
     <!-- Plural because that's how it is in the Db currently -->
     <div class="mb-3">
-        <label for="consoles"> Console</label>
-        <input id="consoles" type="text" formControlName="consoles" class="form-control">
+      <label for="consoles"> Console</label>
+      <input id="consoles" type="text" formControlName="consoles" class="form-control">
     </div>
     <div class="mb-3">
-        <label for="emulator"> Emulator</label>
-        <input id="emulator" type="text" formControlName="emulator" class="form-control">
+      <label for="emulator"> Emulator</label>
+      <input id="emulator" type="text" formControlName="emulator" class="form-control">
     </div>
-    </div>
+  </div>
 
-    <button class="btn btn-success" type="submit" [disabled] = "!gameForm.valid" >Submit</button>
-    <div *ngIf="gameForm.get('title')?.invalid && gameForm.get('title')?.touched" class="alert alert-danger" >
-        Title is required and must be at least 4 letters
-    </div>
-    <div *ngIf="gameForm.get('year')?.invalid && gameForm.get('year')?.touched" class="alert alert-danger" >
-        Year is required and must be a number
-    </div>
-    <div *ngIf="gameForm.get('description')?.invalid && gameForm.get('description')?.touched" class="alert alert-danger" >
-        Description is required and must be at least 10 letters
-    </div>
-    <div *ngIf="gameForm.get('image')?.invalid && gameForm.get('image')?.touched" class="alert alert-danger" >
-        Image is required and must be at least 5 letters
-    </div>
-    <div *ngIf="gameForm.get('consoles')?.invalid && gameForm.get('consoles')?.touched" class="alert alert-danger" >
-        Console is required and must be at least 3 letters
-    </div>
-    <div *ngIf="gameForm.get('emulator')?.invalid && gameForm.get('emulator')?.touched" class="alert alert-danger" >
-        Emulator is required and must be at least 3 letters
-    </div>
+  <button class="btn btn-success" type="submit" [disabled]="!gameForm.valid">Submit</button>
+
+  <div *ngIf="gameForm.get('title')?.invalid && gameForm.get('title')?.touched" class="alert alert-danger">
+    Title is required and must be at least 4 letters
+  </div>
+
+  <div *ngIf="gameForm.get('year')?.invalid && gameForm.get('year')?.touched" class="alert alert-danger">
+    Year is required and must be a number
+  </div>
+
+  <div *ngIf="gameForm.get('description')?.invalid && gameForm.get('description')?.touched" class="alert alert-danger">
+    Description is required and must be at least 10 letters
+  </div>
+
+  <div *ngIf="gameForm.get('image')?.invalid && gameForm.get('image')?.touched" class="alert alert-danger">
+    Image is required
+  </div>
+
+  <div *ngIf="gameForm.get('consoles')?.invalid && gameForm.get('consoles')?.touched" class="alert alert-danger">
+    Console is required and must be at least 3 letters
+  </div>
+
+  <div *ngIf="gameForm.get('emulator')?.invalid && gameForm.get('emulator')?.touched" class="alert alert-danger">
+    Emulator is required and must be at least 3 letters
+  </div>
 </form>
