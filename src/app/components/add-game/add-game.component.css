@@ -7,4 +7,9 @@
 }
 .btn-close{
     margin-left: 40px;
+    color: white;
+}
+.btn-close{
+    color: white;
+    background-color: white;
 }
