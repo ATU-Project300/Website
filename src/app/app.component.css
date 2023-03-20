@@ -23,9 +23,11 @@
 .userinfo{
   color: white;
       font-family: monospace;
-      font-size: 22px;
-      padding-top: 20px;
-      margin-right: 750px;
+      font-size: 16px;
+      text-align: center;
+      padding-top: none;
+      margin-right: 15px;
+      margin-top: 15px;
       
 }
 
