@@ -17,10 +17,9 @@
           <a class="nav-link" routerLink="/about-us">About Us</a>
         </li>
       </ul>
-      <div>
-        <ul class="userinfo" *ngIf="auth.user$ | async as user">
-          <h2>Welcome</h2>
-          {{user.name }}
+      <div >
+        <ul *ngIf="auth.user$ | async as user">
+          <h2 class="userinfo">{{user.name }}</h2>
         </ul>
       </div>
       <button class="darkmodebtn" (click)="toggleDarkTheme()">🎨</button>
